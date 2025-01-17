@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Test1.Configurations.Entities;
 using Test1.Data;
 
 namespace Test1.Data
 {
-    public class Test1Context(DbContextOptions<Test1Context> options) : IdentityDbContext<Test1User>(options)
+    public class Test1Context(DbContextOptions<Test1Context> options) :
+        IdentityDbContext<Test1User>(options)
+
     {
         public DbSet<Test1.Domain.Make> Make { get; set; } = default!;
         public DbSet<Test1.Domain.Model> Model { get; set; } = default!;
