@@ -34,10 +34,12 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-builder.Services.AddIdentityCore<Test1User>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<Test1Context>()
-    .AddSignInManager()
-    .AddDefaultTokenProviders();
+builder.Services.AddIdentityCore<Test1User>(options =>
+options.SignIn.RequireConfirmedAccount = true)
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<Test1Context>()
+.AddSignInManager()
+.AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<Test1User>, IdentityNoOpEmailSender>();
 
